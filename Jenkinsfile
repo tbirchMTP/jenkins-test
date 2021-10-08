@@ -16,8 +16,8 @@ kind: Pod
 spec:
   containers:
     - name: jmeter
-      image: justb4/jmeter
-      imagePullPolicy: IfNotPresent
+      image: ast26/jmeter
+      imagePullPolicy: Never
 '''
                 }
             }
