@@ -1,0 +1,8 @@
+Context: We now have a way to run Kubernetes containers as agents and still use project files as argument (jmeter -n -t <SCM_FILE>).
+
+Now, we should change project files to consume a much cleaner environment (not altering and reusing Jenkins image). To do so:
+
+  - build-pod.yaml: Point to 'ast26/jmeter'.
+  - Dockerfile: Generate image from a clean, alpine linux. Try removing 'wget' and 'tar' installation/usage.
+  - README.txt: Update content to clarify usage of separate images (Jenkins and JMeter). Build/Load 'ast26/jmeter' only.
+  - values.yaml: Is still needed anymore? We may just use a clean Jenkins image instead.
