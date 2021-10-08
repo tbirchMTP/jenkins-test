@@ -8,7 +8,19 @@ pipeline {
             }
         }
         stage('Performance') {
-            agent { kubernetes { yamlFile 'build-pod.yaml' } }
+            agent {
+                kubernetes {
+                    yaml '''
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+    - name: jmeter
+      image: justb4/jmeter
+      imagePullPolicy: IfNotPresent
+'''
+                }
+            }
             steps {
                 container('jmeter') {
                     sh 'jmeter -n -t scripts/localhost8080.jmx -Jurl=localhost -Jport=8080 -f -l jenkins.io.report.jtl'

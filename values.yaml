@@ -1,5 +1,0 @@
-controller:
-  image: "ast26/jenkins"
-  imagePullPolicy: "Never"
-  tag: "latest"
-  installPlugins: true
