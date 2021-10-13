@@ -24,6 +24,7 @@ spec:
             steps {
                 container('jmeter') {
                     sh 'jmeter -n -t scripts/localhost8080.jmx -Jurl=localhost -Jport=8080 -f -l jenkins.io.report.jtl'
+                    perfReport filterRegex: '', showTrendGraphs: true, sourceDataFiles: 'jenkins.io.report.jtl'
                 }
             }
         }
