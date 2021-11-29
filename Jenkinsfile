@@ -4,7 +4,10 @@ def target_port="8080"
 pipeline {
     
     agent {
-        docker { image 'node:14-alpine' }
+        docker { 
+            image 'node:14-alpine' 
+            args '-u root'
+        }
     }
     
     stages {
