@@ -2,7 +2,10 @@ def target_host="ast26-jenkins"
 def target_port="8080"
 
 pipeline {
-    agent any
+    
+    agent {
+        docker { image 'node:14-alpine' }
+    }
     
     stages {
         stage('Hello') {
@@ -11,5 +14,10 @@ pipeline {
             }
         }
         
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
     }
 }
